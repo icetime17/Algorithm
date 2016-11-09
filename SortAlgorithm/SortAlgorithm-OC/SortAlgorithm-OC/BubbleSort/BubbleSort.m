@@ -15,7 +15,8 @@
     for (NSInteger i=0; i<arr.count; i++) {
         for (NSInteger j=0; j<arr.count-1-i; j++) {
             if ([arr[j] integerValue] > [arr[j+1] integerValue]) {
-                [super swap:arr a:j b:j+1];
+//                [super swap:arr a:j b:j+1];
+                [arr exchangeObjectAtIndex:j withObjectAtIndex:j+1];
             }
         }
     }

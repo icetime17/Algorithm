@@ -18,12 +18,14 @@
         while (low < high && [arr[high] integerValue] >= [base integerValue]) {
             high--;
         }
-        [super swap:arr a:low b:high];
+//        [super swap:arr a:low b:high];
+        [arr exchangeObjectAtIndex:low withObjectAtIndex:high];
         
         while (low < high && [arr[low] integerValue] <= [base integerValue]) {
             low++;
         }
-        [super swap:arr a:low b:high];
+//        [super swap:arr a:low b:high];
+        [arr exchangeObjectAtIndex:low withObjectAtIndex:high];
     }
     return low;
 }
