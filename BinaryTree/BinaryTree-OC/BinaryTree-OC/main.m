@@ -41,11 +41,21 @@ int main(int argc, const char * argv[]) {
         
         NSLog(@"%d", getNodeNumber(nodeA));
         NSLog(@"%d", getNodeNumber(aTree));
+        NSLog(@"\n");
         
         NSLog(@"%d", getDepth(nodeA));
         NSLog(@"%d", getDepth(aTree));
+        NSLog(@"\n");
         
+        breadthFirstTraverse(nodeA);
+        NSLog(@"\n");
+        breadthFirstTraverse(aTree);
+        NSLog(@"\n");
         
+        depthFirstTraverse(nodeA);
+        NSLog(@"\n");
+        depthFirstTraverse(aTree);
+        NSLog(@"\n");
     }
     return 0;
 }

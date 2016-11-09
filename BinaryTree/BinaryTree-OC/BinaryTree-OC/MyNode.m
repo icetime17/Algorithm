@@ -107,3 +107,47 @@ int getDepth(MyNode *node)
     }
     return (getDepth(node.left) ?: getDepth(node.right))+ 1;
 }
+
+void depthFirstTraverse(MyNode *node)
+{
+    // 栈结构
+    NSMutableArray *arr = [NSMutableArray array];
+    [arr insertObject:node atIndex:0];
+    
+    while (arr.count>0) {
+        MyNode *currentNode = [arr firstObject];
+        NSLog(@"%@", currentNode.nodeName); // 从栈顶开始
+        
+        [arr removeObjectAtIndex:0];
+        
+        if (currentNode.right) {
+            [arr insertObject:currentNode.right atIndex:0];
+        }
+        if (currentNode.left) {
+            [arr insertObject:currentNode.left atIndex:0];
+        }
+    }
+}
+
+void breadthFirstTraverse(MyNode *node)
+{
+    // 队列结构
+    NSMutableArray *arr = [NSMutableArray array];
+    [arr addObject:node];
+    
+    while (arr.count>0) {
+        MyNode *currentNode = [arr firstObject];
+        NSLog(@"%@", currentNode.nodeName); // 从队列头开始
+        
+        [arr removeObjectAtIndex:0];
+        
+        if (currentNode.left) {
+            [arr addObject:currentNode.left];
+        }
+        
+        if (currentNode.right) {
+            [arr addObject:currentNode.right];
+        }
+    }    
+}
+
