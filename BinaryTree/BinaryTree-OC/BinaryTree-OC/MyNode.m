@@ -60,6 +60,22 @@ MyNode* aBinaryTree()
     return nodeA;
 }
 
+int getNodeNumber(MyNode *node)
+{
+    if (node == NULL) {
+        return 0;
+    }
+    return getNodeNumber(node.left) + getNodeNumber(node.right) + 1;
+}
+
+int getDepth(MyNode *node)
+{
+    if (node == NULL) {
+        return 0;
+    }
+    return (getDepth(node.left) ?: getDepth(node.right))+ 1;
+}
+
 void visitNode(MyNode *node)
 {
     NSLog(@"%@", node.nodeName);
@@ -92,22 +108,6 @@ void lastOrderEnumerate(MyNode *node)
     visitNode(node);
 }
 
-int getNodeNumber(MyNode *node)
-{
-    if (node == NULL) {
-        return 0;
-    }
-    return getNodeNumber(node.left) + getNodeNumber(node.right) + 1;
-}
-
-int getDepth(MyNode *node)
-{
-    if (node == NULL) {
-        return 0;
-    }
-    return (getDepth(node.left) ?: getDepth(node.right))+ 1;
-}
-
 void depthFirstTraverse(MyNode *node)
 {
     // 栈结构
@@ -116,7 +116,7 @@ void depthFirstTraverse(MyNode *node)
     
     while (arr.count>0) {
         MyNode *currentNode = [arr firstObject];
-        NSLog(@"%@", currentNode.nodeName); // 从栈顶开始
+        visitNode(currentNode); // 从栈顶开始
         
         [arr removeObjectAtIndex:0];
         
@@ -137,7 +137,7 @@ void breadthFirstTraverse(MyNode *node)
     
     while (arr.count>0) {
         MyNode *currentNode = [arr firstObject];
-        NSLog(@"%@", currentNode.nodeName); // 从队列头开始
+        visitNode(currentNode); // 从队列头开始
         
         [arr removeObjectAtIndex:0];
         
