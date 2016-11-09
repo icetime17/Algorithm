@@ -60,9 +60,9 @@
 		A4DD4CD51DD31ED90078A7FD /* BinaryTree-OC */ = {
 			isa = PBXGroup;
 			children = (
-				A4DD4CD61DD31ED90078A7FD /* main.m */,
 				A4DD4CDD1DD31EF80078A7FD /* MyNode.h */,
 				A4DD4CDE1DD31EF80078A7FD /* MyNode.m */,
+				A4DD4CD61DD31ED90078A7FD /* main.m */,
 			);
 			path = "BinaryTree-OC";
 			sourceTree = "<group>";

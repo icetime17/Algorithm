@@ -8,6 +8,11 @@
 
 #import "MyNode.h"
 
+@implementation MyNode
+
+@end
+
+
 MyNode* aBinaryTree()
 {
     MyNode *nodeA = [[MyNode alloc] init];
@@ -87,7 +92,18 @@ void lastOrderEnumerate(MyNode *node)
     visitNode(node);
 }
 
+int getNodeNumber(MyNode *node)
+{
+    if (node == NULL) {
+        return 0;
+    }
+    return getNodeNumber(node.left) + getNodeNumber(node.right) + 1;
+}
 
-@implementation MyNode
-
-@end
+int getDepth(MyNode *node)
+{
+    if (node == NULL) {
+        return 0;
+    }
+    return (getDepth(node.left) ?: getDepth(node.right))+ 1;
+}

@@ -38,6 +38,14 @@ int main(int argc, const char * argv[]) {
         NSLog(@"\n");
         lastOrderEnumerate(aTree);
         NSLog(@"\n");
+        
+        NSLog(@"%d", getNodeNumber(nodeA));
+        NSLog(@"%d", getNodeNumber(aTree));
+        
+        NSLog(@"%d", getDepth(nodeA));
+        NSLog(@"%d", getDepth(aTree));
+        
+        
     }
     return 0;
 }
