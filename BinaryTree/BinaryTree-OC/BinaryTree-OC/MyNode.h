@@ -22,13 +22,13 @@ MyNode* aBinaryTree();
 
 int getNodeNumber(MyNode *node);        // 二叉树的结点个数
 
-int getDepth(MyNode *node);             // 二叉树的深度
+int getTreeDepth(MyNode *node);         // 二叉树的深度
 
 void visitNode(MyNode *node);
 
-void firstOrderEnumerate(MyNode *node); // 前序遍历
-void midOrderEnumerate(MyNode *node);   // 中序遍历
-void lastOrderEnumerate(MyNode *node);  // 后序遍历
+void firstOrderTraverse(MyNode *node); // 前序遍历
+void midOrderTraverse(MyNode *node);   // 中序遍历
+void lastOrderTraverse(MyNode *node);  // 后序遍历
 
 void depthFirstTraverse(MyNode *node);  // 深度优先遍历
 void breadthFirstTraverse(MyNode *node);// 广度优先遍历

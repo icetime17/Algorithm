@@ -24,38 +24,40 @@ int main(int argc, const char * argv[]) {
         nodeA.left = nodeB;
         nodeA.right= nodeC;
         
-        firstOrderEnumerate(nodeA);
+        NSLog(@"firstOrderTraverse :\n");
+        firstOrderTraverse(nodeA);
         NSLog(@"\n");
-        midOrderEnumerate(nodeA);
+        NSLog(@"midOrderTraverse :\n");
+        midOrderTraverse(nodeA);
         NSLog(@"\n");
-        lastOrderEnumerate(nodeA);
+        NSLog(@"lastOrderTraverse :\n");
+        lastOrderTraverse(nodeA);
         NSLog(@"\n");
         
+        NSLog(@"firstOrderTraverse :\n");
         MyNode *aTree = aBinaryTree();
-        firstOrderEnumerate(aTree);
+        firstOrderTraverse(aTree);
         NSLog(@"\n");
-        midOrderEnumerate(aTree);
+        NSLog(@"midOrderTraverse :\n");
+        midOrderTraverse(aTree);
         NSLog(@"\n");
-        lastOrderEnumerate(aTree);
-        NSLog(@"\n");
-        
-        NSLog(@"%d", getNodeNumber(nodeA));
-        NSLog(@"%d", getNodeNumber(aTree));
+        NSLog(@"lastOrderTraverse :\n");
+        lastOrderTraverse(aTree);
         NSLog(@"\n");
         
-        NSLog(@"%d", getDepth(nodeA));
-        NSLog(@"%d", getDepth(aTree));
+        NSLog(@"getNodeNumber : %d", getNodeNumber(nodeA));
+        NSLog(@"getNodeNumber : %d", getNodeNumber(aTree));
+        NSLog(@"\n");
+        
+        NSLog(@"getTreeDepth : %d", getTreeDepth(nodeA));
+        NSLog(@"getTreeDepth : %d", getTreeDepth(aTree));
         NSLog(@"\n");
         
         breadthFirstTraverse(nodeA);
-        NSLog(@"\n");
         breadthFirstTraverse(aTree);
-        NSLog(@"\n");
         
         depthFirstTraverse(nodeA);
-        NSLog(@"\n");
         depthFirstTraverse(aTree);
-        NSLog(@"\n");
     }
     return 0;
 }

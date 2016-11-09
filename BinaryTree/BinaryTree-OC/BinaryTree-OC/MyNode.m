@@ -17,45 +17,55 @@ MyNode* aBinaryTree()
 {
     MyNode *nodeA = [[MyNode alloc] init];
     nodeA.nodeName = @"A";
-    
-    MyNode *nodeA1 = [[MyNode alloc] init];
-    nodeA1.nodeName = @"A1";
-    
-    MyNode *nodeA2 = [[MyNode alloc] init];
-    nodeA2.nodeName = @"A2";
-    
-    nodeA.left = nodeA1;
-    nodeA.right= nodeA2;
-    
-    
     MyNode *nodeB = [[MyNode alloc] init];
     nodeB.nodeName = @"B";
-    
-    MyNode *nodeB1 = [[MyNode alloc] init];
-    nodeB1.nodeName = @"B1";
-    
-    MyNode *nodeB2 = [[MyNode alloc] init];
-    nodeB2.nodeName = @"B2";
-    
-    nodeB.left = nodeB1;
-    nodeB.right= nodeB2;
-    
-    
     MyNode *nodeC = [[MyNode alloc] init];
     nodeC.nodeName = @"C";
+    MyNode *nodeD = [[MyNode alloc] init];
+    nodeD.nodeName = @"D";
+    MyNode *nodeE = [[MyNode alloc] init];
+    nodeE.nodeName = @"E";
+    MyNode *nodeF = [[MyNode alloc] init];
+    nodeF.nodeName = @"F";
+    MyNode *nodeG = [[MyNode alloc] init];
+    nodeG.nodeName = @"G";
+    MyNode *nodeH = [[MyNode alloc] init];
+    nodeH.nodeName = @"H";
+    MyNode *nodeI = [[MyNode alloc] init];
+    nodeI.nodeName = @"I";
+    MyNode *nodeJ = [[MyNode alloc] init];
+    nodeJ.nodeName = @"J";
+    MyNode *nodeK = [[MyNode alloc] init];
+    nodeK.nodeName = @"K";
+    MyNode *nodeL = [[MyNode alloc] init];
+    nodeL.nodeName = @"L";
+    MyNode *nodeM = [[MyNode alloc] init];
+    nodeM.nodeName = @"M";
+    MyNode *nodeN = [[MyNode alloc] init];
+    nodeN.nodeName = @"N";
+    MyNode *nodeO = [[MyNode alloc] init];
+    nodeO.nodeName = @"O";
     
-    MyNode *nodeC1 = [[MyNode alloc] init];
-    nodeC1.nodeName = @"C1";
+    nodeA.left = nodeB;
+    nodeA.right= nodeC;
+
+    nodeB.left = nodeD;
+    nodeB.right= nodeE;
     
-    MyNode *nodeC2 = [[MyNode alloc] init];
-    nodeC2.nodeName = @"C2";
+    nodeC.left = nodeF;
+    nodeC.right= nodeG;
     
-    nodeC.left = nodeC1;
-    nodeC.right= nodeC2;
+    nodeD.left = nodeH;
+    nodeD.right= nodeI;
     
+    nodeE.left = nodeJ;
+    nodeE.right= nodeK;
     
-    nodeA1.left = nodeB;
-    nodeA2.right= nodeC;
+    nodeF.left = nodeL;
+    nodeF.right= nodeM;
+    
+    nodeG.left = nodeN;
+    nodeG.right= nodeO;
     
     return nodeA;
 }
@@ -68,12 +78,12 @@ int getNodeNumber(MyNode *node)
     return getNodeNumber(node.left) + getNodeNumber(node.right) + 1;
 }
 
-int getDepth(MyNode *node)
+int getTreeDepth(MyNode *node)
 {
     if (node == NULL) {
         return 0;
     }
-    return (getDepth(node.left) ?: getDepth(node.right))+ 1;
+    return (getTreeDepth(node.left) ?: getTreeDepth(node.right))+ 1;
 }
 
 void visitNode(MyNode *node)
@@ -81,35 +91,38 @@ void visitNode(MyNode *node)
     NSLog(@"%@", node.nodeName);
 }
 
-void firstOrderEnumerate(MyNode *node)
+void firstOrderTraverse(MyNode *node)
 {
     visitNode(node);
     
-    if (node.left) { firstOrderEnumerate(node.left); }
+    if (node.left) { firstOrderTraverse(node.left); }
     
-    if (node.right) { firstOrderEnumerate(node.right); }
+    if (node.right) { firstOrderTraverse(node.right); }
 }
 
-void midOrderEnumerate(MyNode *node)
+void midOrderTraverse(MyNode *node)
 {
-    if (node.left) { midOrderEnumerate(node.left); }
+    if (node.left) { midOrderTraverse(node.left); }
     
     visitNode(node);
     
-    if (node.right) { midOrderEnumerate(node.right); }
+    if (node.right) { midOrderTraverse(node.right); }
 }
 
-void lastOrderEnumerate(MyNode *node)
+void lastOrderTraverse(MyNode *node)
 {
-    if (node.left) { lastOrderEnumerate(node.left); }
+    if (node.left) { lastOrderTraverse(node.left); }
     
-    if (node.right) { lastOrderEnumerate(node.right); }
+    if (node.right) { lastOrderTraverse(node.right); }
     
     visitNode(node);
 }
 
 void depthFirstTraverse(MyNode *node)
 {
+    NSLog(@"\n");
+    NSLog(@"DFS :");
+    
     // 栈结构
     NSMutableArray *arr = [NSMutableArray array];
     [arr insertObject:node atIndex:0];
@@ -131,6 +144,9 @@ void depthFirstTraverse(MyNode *node)
 
 void breadthFirstTraverse(MyNode *node)
 {
+    NSLog(@"\n");
+    NSLog(@"BFS :");
+    
     // 队列结构
     NSMutableArray *arr = [NSMutableArray array];
     [arr addObject:node];
