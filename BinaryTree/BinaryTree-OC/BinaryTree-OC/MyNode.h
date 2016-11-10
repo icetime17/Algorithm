@@ -32,3 +32,5 @@ void lastOrderTraverse(MyNode *node);  // 后序遍历
 
 void depthFirstTraverse(MyNode *node);  // 深度优先遍历
 void breadthFirstTraverse(MyNode *node);// 广度优先遍历
+
+int nodeNumbersOfLevel(MyNode *node, int level);    // 返回第i层节点数

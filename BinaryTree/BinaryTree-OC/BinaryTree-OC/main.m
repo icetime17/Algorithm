@@ -58,6 +58,19 @@ int main(int argc, const char * argv[]) {
         
         depthFirstTraverse(nodeA);
         depthFirstTraverse(aTree);
+        
+        NSLog(@"nodeNumbersOfLevel : %d", nodeNumbersOfLevel(nodeA, 0));
+        NSLog(@"nodeNumbersOfLevel : %d", nodeNumbersOfLevel(nodeA, 1));
+        NSLog(@"nodeNumbersOfLevel : %d", nodeNumbersOfLevel(nodeA, 2));
+        NSLog(@"nodeNumbersOfLevel : %d", nodeNumbersOfLevel(nodeA, 3));
+        NSLog(@"nodeNumbersOfLevel : %d", nodeNumbersOfLevel(nodeA, 4));
+        
+        NSLog(@"nodeNumbersOfLevel : %d", nodeNumbersOfLevel(aTree, 0));
+        NSLog(@"nodeNumbersOfLevel : %d", nodeNumbersOfLevel(aTree, 1));
+        NSLog(@"nodeNumbersOfLevel : %d", nodeNumbersOfLevel(aTree, 2));
+        NSLog(@"nodeNumbersOfLevel : %d", nodeNumbersOfLevel(aTree, 3));
+        NSLog(@"nodeNumbersOfLevel : %d", nodeNumbersOfLevel(aTree, 4));
+        NSLog(@"nodeNumbersOfLevel : %d", nodeNumbersOfLevel(aTree, 5));
     }
     return 0;
 }

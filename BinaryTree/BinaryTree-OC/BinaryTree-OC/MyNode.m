@@ -167,3 +167,15 @@ void breadthFirstTraverse(MyNode *node)
     }    
 }
 
+int nodeNumbersOfLevel(MyNode *node, int level)
+{
+    if (node == nil || level < 1) {
+        return 0;
+    }
+    
+    if (level == 1) {
+        return 1;
+    }
+    
+    return nodeNumbersOfLevel(node.left, level - 1) + nodeNumbersOfLevel(node.right, level - 1);
+}
