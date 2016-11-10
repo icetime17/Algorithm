@@ -96,6 +96,19 @@ int main(int argc, const char * argv[]) {
         }
         NSLog(@"\n");
         
+        NSLog(@"midOrderTraverse :\n");
+        midOrderTraverse(nodeA);
+        invertTree(nodeA);
+        NSLog(@"midOrderTraverse :\n");
+        midOrderTraverse(nodeA);
+        NSLog(@"\n");
+        
+        NSLog(@"midOrderTraverse :\n");
+        midOrderTraverse(aTree);
+        invertTree(aTree);
+        NSLog(@"midOrderTraverse :\n");
+        midOrderTraverse(aTree);
+        NSLog(@"\n");
     }
     return 0;
 }

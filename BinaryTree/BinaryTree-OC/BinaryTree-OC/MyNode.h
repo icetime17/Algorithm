@@ -37,3 +37,5 @@ void breadthFirstTraverse(MyNode *node);// 广度优先遍历
 
 NSMutableArray *pathOfNodeInTree(MyNode *node, MyNode *tree);           // 从根结点寻找子结点的路径
 BOOL findNodeInTree(MyNode *node, MyNode *tree, NSMutableArray *path);  // 从二叉树中寻找子结点
+
+MyNode *invertTree(MyNode *node);       // 翻转二叉树

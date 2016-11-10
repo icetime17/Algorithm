@@ -227,3 +227,23 @@ BOOL findNodeInTree(MyNode *node, MyNode *tree, NSMutableArray *path)
     
     return isFound;
 }
+
+MyNode *invertTree(MyNode *node)
+{
+    if (node == nil) {
+        return nil;
+    }
+    
+    if (node.left == nil && node.right == nil) {
+        return node;
+    }
+    
+    invertTree(node.left);
+    invertTree(node.right);
+    
+    MyNode *tmpNode = node.left;
+    node.left = node.right;
+    node.right = tmpNode;
+    
+    return node;
+}
