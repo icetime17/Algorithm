@@ -59,6 +59,9 @@ int main(int argc, const char * argv[]) {
         depthFirstTraverse(nodeA);
         depthFirstTraverse(aTree);
         
+        NSLog(@"nodeNumbersOfLeafs : %d", nodeNumbersOfLeafs(nodeA));
+        NSLog(@"nodeNumbersOfLeafs : %d", nodeNumbersOfLeafs(aTree));
+        
         NSLog(@"nodeNumbersOfLevel : %d", nodeNumbersOfLevel(nodeA, 0));
         NSLog(@"nodeNumbersOfLevel : %d", nodeNumbersOfLevel(nodeA, 1));
         NSLog(@"nodeNumbersOfLevel : %d", nodeNumbersOfLevel(nodeA, 2));

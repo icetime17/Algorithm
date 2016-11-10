@@ -78,12 +78,39 @@ int getNodeNumber(MyNode *node)
     return getNodeNumber(node.left) + getNodeNumber(node.right) + 1;
 }
 
+int nodeNumbersOfLeafs(MyNode *node)
+{
+    if (node == nil) {
+        return 0;
+    }
+    
+    if (node.left == nil && node.right == nil) {
+        return 1;
+    }
+    
+    return nodeNumbersOfLeafs(node.left) + nodeNumbersOfLeafs(node.right);
+}
+
+int nodeNumbersOfLevel(MyNode *node, int level)
+{
+    if (node == nil || level < 1) {
+        return 0;
+    }
+    
+    if (level == 1) {
+        return 1;
+    }
+    
+    return nodeNumbersOfLevel(node.left, level - 1) + nodeNumbersOfLevel(node.right, level - 1);
+}
+
 int getTreeDepth(MyNode *node)
 {
     if (node == NULL) {
         return 0;
     }
-    return (getTreeDepth(node.left) ?: getTreeDepth(node.right))+ 1;
+//    return (getTreeDepth(node.left) ?: getTreeDepth(node.right)) + 1;
+    return MAX(getTreeDepth(node.left), getTreeDepth(node.right)) + 1;
 }
 
 void visitNode(MyNode *node)
@@ -165,17 +192,4 @@ void breadthFirstTraverse(MyNode *node)
             [arr addObject:currentNode.right];
         }
     }    
-}
-
-int nodeNumbersOfLevel(MyNode *node, int level)
-{
-    if (node == nil || level < 1) {
-        return 0;
-    }
-    
-    if (level == 1) {
-        return 1;
-    }
-    
-    return nodeNumbersOfLevel(node.left, level - 1) + nodeNumbersOfLevel(node.right, level - 1);
 }
