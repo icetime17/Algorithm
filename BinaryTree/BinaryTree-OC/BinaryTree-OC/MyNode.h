@@ -34,3 +34,6 @@ void lastOrderTraverse(MyNode *node);  // 后序遍历
 
 void depthFirstTraverse(MyNode *node);  // 深度优先遍历
 void breadthFirstTraverse(MyNode *node);// 广度优先遍历
+
+NSMutableArray *pathOfNodeInTree(MyNode *node, MyNode *tree);           // 从根结点寻找子结点的路径
+BOOL findNodeInTree(MyNode *node, MyNode *tree, NSMutableArray *path);  // 从二叉树中寻找子结点

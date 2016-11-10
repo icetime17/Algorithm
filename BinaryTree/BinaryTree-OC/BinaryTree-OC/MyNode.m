@@ -193,3 +193,37 @@ void breadthFirstTraverse(MyNode *node)
         }
     }    
 }
+
+NSMutableArray *pathOfNodeInTree(MyNode *node, MyNode *tree)
+{
+    if (node == nil || tree == nil) {
+        return nil;
+    }
+    
+    NSMutableArray *path = [NSMutableArray array];
+    findNodeInTree(node, tree, path);
+    return path;
+}
+
+BOOL findNodeInTree(MyNode *node, MyNode *tree, NSMutableArray *path)
+{
+    if (node == nil || tree == nil) {
+        return NO;
+    }
+    
+    [path addObject:tree];
+    
+    if (tree == node) {
+        return YES;
+    }
+    
+    BOOL isFound = findNodeInTree(node, tree.left, path);
+    if (!isFound) {
+        isFound = findNodeInTree(node, tree.right, path);
+    }
+    if (!isFound) {
+        [path removeLastObject];
+    }
+    
+    return isFound;
+}

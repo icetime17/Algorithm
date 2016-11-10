@@ -58,6 +58,7 @@ int main(int argc, const char * argv[]) {
         
         depthFirstTraverse(nodeA);
         depthFirstTraverse(aTree);
+        NSLog(@"\n");
         
         NSLog(@"nodeNumbersOfLeafs : %d", nodeNumbersOfLeafs(nodeA));
         NSLog(@"nodeNumbersOfLeafs : %d", nodeNumbersOfLeafs(aTree));
@@ -74,6 +75,27 @@ int main(int argc, const char * argv[]) {
         NSLog(@"nodeNumbersOfLevel : %d", nodeNumbersOfLevel(aTree, 3));
         NSLog(@"nodeNumbersOfLevel : %d", nodeNumbersOfLevel(aTree, 4));
         NSLog(@"nodeNumbersOfLevel : %d", nodeNumbersOfLevel(aTree, 5));
+        NSLog(@"\n");
+        
+        NSMutableArray *path = pathOfNodeInTree(nodeB, nodeA);
+        for (MyNode *node in path) {
+            visitNode(node);
+        }
+        NSLog(@"\n");
+        
+        MyNode *O = aTree.right.right.right;
+        path = pathOfNodeInTree(O, aTree);
+        for (MyNode *node in path) {
+            visitNode(node);
+        }
+        NSLog(@"\n");
+        
+        path = pathOfNodeInTree(nodeA, aTree);
+        for (MyNode *node in path) {
+            visitNode(node);
+        }
+        NSLog(@"\n");
+        
     }
     return 0;
 }
