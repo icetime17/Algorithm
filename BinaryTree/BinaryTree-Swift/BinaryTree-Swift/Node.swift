@@ -21,6 +21,10 @@ class Node {
     func visit() {
         print(nodeValue)
     }
+    
+    func isNodeEqualTo(node: Node) -> Bool {
+        return nodeValue == node.nodeValue
+    }
 }
 
 extension Node {
@@ -150,6 +154,26 @@ extension Node {
                 arr.insert(lNode, at: 0)
             }
         }
+    }
+    
+    func isNodeExisting(node: Node, path: inout Array<Node>) -> Bool {
+        path.append(self)
+        
+        if self.isNodeEqualTo(node: node) {
+            return true
+        }
+        
+        var isExisting = false
+        if left != nil {
+            isExisting = left.isNodeExisting(node: node, path: &path)
+        }
+        if isExisting == false && right != nil {
+            isExisting = right.isNodeExisting(node: node, path: &path)
+        }
+        if isExisting == false {
+            path.removeLast()
+        }
+        return isExisting
     }
 }
 

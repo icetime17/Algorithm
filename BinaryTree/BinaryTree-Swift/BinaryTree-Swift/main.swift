@@ -61,6 +61,7 @@ print(sTree.nodeNumberOfLevel(level: 0))
 print(sTree.nodeNumberOfLevel(level: 1))
 print(sTree.nodeNumberOfLevel(level: 2))
 print(sTree.nodeNumberOfLevel(level: 3))
+
 print("")
 sTree.firstOrderTraverse()
 print("")
@@ -73,10 +74,30 @@ sTree.breadthFirstSearch()
 print("")
 print("DFS")
 sTree.depthFirstSearch()
+
 print("")
 print("invertNode")
 let retSTree = sTree.invertNode()
 retSTree.breadthFirstSearch()
+
+let nodeA = Node(value: "A")
+let nodeB = Node(value: "B")
+let nodeC = Node(value: "C")
+let nodeD = Node(value: "D")
+nodeA.left = nodeB
+nodeA.right = nodeC
+print("")
+print("isNodeExisting")
+var path = Array<Node>()
+var isExisting = nodeA.isNodeExisting(node: nodeB, path: &path)
+print("\(isExisting)")
+for tmpNode: Node in path {
+    tmpNode.visit()
+}
+print("")
+print("isNodeExisting")
+isExisting = sTree.isNodeExisting(node: nodeD, path: &path)
+print("\(isExisting)")
 
 
 // my tree
@@ -91,6 +112,7 @@ print(mTree.nodeNumberOfLevel(level: 2))
 print(mTree.nodeNumberOfLevel(level: 3))
 print(mTree.nodeNumberOfLevel(level: 4))
 print(mTree.nodeNumberOfLevel(level: 5))
+
 print("")
 mTree.firstOrderTraverse()
 print("")
@@ -103,7 +125,18 @@ mTree.breadthFirstSearch()
 print("")
 print("DFS")
 mTree.depthFirstSearch()
+
 print("")
 print("invertNode")
 let retMTree = mTree.invertNode()
 retMTree.breadthFirstSearch()
+
+print("")
+print("isNodeExisting")
+let nodeH = Node(value: "H")
+path = Array<Node>()
+isExisting = mTree.isNodeExisting(node: nodeH, path: &path)
+print("\(isExisting)")
+for tmpNode: Node in path {
+    tmpNode.visit()
+}
