@@ -36,6 +36,32 @@ extension Node {
         number += 1
         return number
     }
+    
+    // 树的叶子结点个数
+    func allLeafNodeNumber() -> Int {
+        if left == nil && right == nil {
+            return 1
+        }
+        return left.allLeafNodeNumber() + right.allLeafNodeNumber()
+    }
+    
+    // 第i层的结点个数
+    func nodeNumberOfLevel(level: Int) -> Int {
+        if level < 1 {
+            return 0
+        }
+        if level == 1 {
+            return 1
+        }
+        var number = 0
+        if left != nil {
+            number += left.nodeNumberOfLevel(level: level - 1)
+        }
+        if right != nil {
+            number += right.nodeNumberOfLevel(level: level - 1)
+        }
+        return number
+    }
 }
 
 extension Node {
@@ -127,5 +153,21 @@ extension Node {
     }
 }
 
-
+extension Node {
+    // 二叉树翻转
+    func invertNode() -> Node {
+        if left == nil && right == nil {
+            return self
+        }
+        
+        left.invertNode()
+        right.invertNode()
+        
+        let tmpNode = left
+        left = right
+        right = tmpNode
+        
+        return self
+    }
+}
 
