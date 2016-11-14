@@ -115,6 +115,46 @@ extension Node {
         }
         visit()
     }
+    
+    
+    // 用栈实现前序遍历
+    func preOrderTraversalViaStack() {
+        var stack = Array<Node>()
+        var node: Node? = self
+        stack.insert(node!, at: 0)
+        while !stack.isEmpty {
+            node = stack.removeFirst()
+            node?.visit()
+            
+            if let rNode = node?.right {
+                stack.insert(rNode, at: 0)
+            }
+            if let lNode = node?.left {
+                stack.insert(lNode, at: 0)
+            }
+        }
+    }
+    
+    // 用栈实现中序遍历
+    func midOrderTraversalViaStack() {
+        var stack = Array<Node>()
+        var node: Node? = self
+        while !stack.isEmpty || node != nil {
+            if node != nil {
+                stack.insert(node!, at: 0)
+                node = node?.left
+            } else {
+                node = stack.removeFirst()
+                node?.visit()
+                node = node?.right
+            }
+        }
+    }
+    
+    // 用栈实现后序遍历
+    func lastOrderTraversalViaStack() {
+        var stack = Array<Node>()
+    }
 }
 
 extension Node {
