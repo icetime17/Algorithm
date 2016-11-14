@@ -84,34 +84,34 @@ extension Node {
 
 extension Node {
     // 前序遍历
-    func firstOrderTraverse() {
+    func preOrderTraversal() {
         visit()
         if left != nil {
-            left.firstOrderTraverse()
+            left.preOrderTraversal()
         }
         if right != nil {
-            right.firstOrderTraverse()
+            right.preOrderTraversal()
         }
     }
     
     // 中序遍历
-    func midOrderTraverse() {
+    func midOrderTraversal() {
         if left != nil {
-            left.midOrderTraverse()
+            left.midOrderTraversal()
         }
         visit()
         if right != nil {
-            right.midOrderTraverse()
+            right.midOrderTraversal()
         }
     }
     
     // 后序遍历
-    func lastOrderTraverse() {
+    func lastOrderTraversal() {
         if left != nil {
-            left.lastOrderTraverse()
+            left.lastOrderTraversal()
         }
         if right != nil {
-            right.lastOrderTraverse()
+            right.lastOrderTraversal()
         }
         visit()
     }
