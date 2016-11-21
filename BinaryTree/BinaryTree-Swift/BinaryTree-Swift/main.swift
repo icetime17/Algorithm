@@ -17,6 +17,15 @@ func simpleTree() -> Node {
     return nodeA
 }
 
+func simpleBinarySearchTree() -> Node {
+    let nodeB = Node(value: "B")
+    let nodeA = Node(value: "A")
+    let nodeC = Node(value: "C")
+    nodeB.left = nodeA
+    nodeB.right = nodeC
+    return nodeB
+}
+
 func myTree() -> Node {
     let nodeA = Node(value: "A")
     let nodeB = Node(value: "B")
@@ -55,6 +64,9 @@ func myTree() -> Node {
 print("")
 let sTree = simpleTree()
 print(sTree.depth())
+print("isBinarySearchTree : \(sTree.isBinarySearchTree())")
+let binarySearchTree = simpleBinarySearchTree()
+print("isBinarySearchTree : \(binarySearchTree.isBinarySearchTree())")
 print(sTree.allNodeNumber())
 print(sTree.allLeafNodeNumber())
 print(sTree.nodeNumberOfLevel(level: 0))

@@ -28,7 +28,7 @@ class Node {
 }
 
 extension Node {
-    // 树的结点个数
+    // 树的节点个数
     func allNodeNumber() -> Int {
         var number = 0
         if left != nil {
@@ -41,7 +41,7 @@ extension Node {
         return number
     }
     
-    // 树的叶子结点个数
+    // 树的叶子节点个数
     func allLeafNodeNumber() -> Int {
         if left == nil && right == nil {
             return 1
@@ -49,7 +49,7 @@ extension Node {
         return left.allLeafNodeNumber() + right.allLeafNodeNumber()
     }
     
-    // 第i层的结点个数
+    // 第i层的节点个数
     func nodeNumberOfLevel(level: Int) -> Int {
         if level < 1 {
             return 0
@@ -80,6 +80,33 @@ extension Node {
         number += 1
         return number
     }
+    
+    // 二叉查找树：左结点的值 < 根节点的值 < 右节点的值
+    func isBinarySearchTree() -> Bool {
+        return _isBST(min: nil, max: nil)
+    }
+    
+    private func _isBST(min: String?, max: String?) -> Bool {
+        // 所有右子节点都必须大于根节点
+        if min != nil && nodeValue <= min! {
+            return false
+        }
+
+        // 所有左子节点都必须小于根节点
+        if max != nil && nodeValue >= max! {
+            return false
+        }
+        
+        var ret = true
+        if left != nil {
+            ret = ret && left._isBST(min: min, max: nodeValue)
+        }
+        if right != nil {
+            ret = ret && right._isBST(min: nodeValue, max: max)
+        }
+        return ret
+    }
+    
 }
 
 extension Node {
