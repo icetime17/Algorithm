@@ -1,6 +1,10 @@
 #!/usr/bin/swift
 
 func swap_T<T>(array: inout [T], i: Int, j: Int) {
+    if i < 0 || j < 0 { 
+        return
+    }
+
     if array.count <= i ||
        array.count <= j {
         return

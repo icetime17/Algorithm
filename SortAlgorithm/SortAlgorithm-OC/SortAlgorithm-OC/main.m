@@ -44,7 +44,7 @@ int main(int argc, const char * argv[])
 {
     @autoreleasepool {
         
-        testBubbleSort();
+//        testBubbleSort();
         testQuickSort();
     }
     return 0;

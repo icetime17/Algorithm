@@ -27,6 +27,23 @@ func bubbleSort(numbers: inout [Int]) {
     }
 }
 
+
+func swapA<A>(arr: inout [A], i: Int, j: Int) {
+    let tmp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = tmp
+}
+
+func bubble(numbers: inout [Int]) {
+    for i in 0..<numbers.count - 1 {
+        for j in 0..<numbers.count - 1 - i {
+            if numbers[j] > numbers[j+1] {
+                swapA(arr: &numbers, i: j, j: j + 1)
+            }
+        }
+    }
+}
+
 var numbers = [1,3,10,6,4,5,9,2,8,7]
 print(numbers)
 bubbleSort(numbers: &numbers)
@@ -87,5 +104,125 @@ func twoSum(nums: [Int], target: Int) -> Bool {
 }
 
 print(twoSum(nums: [1,2,3], target: 6))
+
+
+func partition(arr: inout [Int], low: Int, high: Int) -> Int {
+    let base = arr[low]
+    var low = low
+    var high = high
+    
+    while low < high {
+        while low < high && arr[high] >= base {
+            high = high - 1
+        }
+        swapA(arr: &arr, i: low, j: high)
+        
+        while low < high && arr[low] <= base {
+            low = low + 1
+        }
+        swapA(arr: &arr, i: low, j: high)
+    }
+    
+    return low
+}
+
+func quickSort(arr: inout [Int], low: Int, high: Int) {
+    if low < high {
+        let d = partition(arr: &arr, low: low, high: high)
+        quickSort(arr: &arr, low: low, high: d - 1)
+        quickSort(arr: &arr, low: d + 1, high: high)
+    }
+}
+
+numbers = [1,3,10,6,4,5,9,2,8,7]
+print(numbers)
+quickSort(arr: &numbers, low: 0, high: numbers.count - 1)
+print(numbers)
+
+
+
+// 左侧奇数，右侧偶数
+func partition2(arr: inout [Int], low: Int, high: Int) -> Int {
+    var low = low
+    var high = high
+    
+    while low < high {
+        if low < high && arr[high] % 2 == 0 {
+            high = high - 1
+        }
+        swapA(arr: &arr, i: low, j: high)
+        
+        if low < high && arr[low] % 2 == 1 {
+            low = low + 1
+        }
+        swapA(arr: &arr, i: low, j: high)
+    }
+    
+    return low
+}
+
+
+func quickSort2(arr: inout [Int], low: Int, high: Int) {
+    if low < high {
+        let d = partition2(arr: &arr, low: low, high: high)
+        quickSort2(arr: &arr, low: low, high: d - 1)
+        quickSort2(arr: &arr, low: d + 1, high: high)
+    }
+}
+
+numbers = [1,3,10,6,4,5,9,2,8,7]
+print(numbers)
+quickSort2(arr: &numbers, low: 0, high: numbers.count - 1)
+print(numbers)
+
+
+
+// 左侧male，右侧female
+func partition3(arr: inout [String], low: Int, high: Int) -> Int {
+    var low = low
+    var high = high
+    
+    while low < high {
+        if low < high && arr[high] == "female" {
+            high = high - 1
+        }
+        swapA(arr: &arr, i: low, j: high)
+        
+        if low < high && arr[low] == "male" {
+            low = low + 1
+        }
+        swapA(arr: &arr, i: low, j: high)
+    }
+    
+    return low
+}
+
+func quickSort3(arr: inout [String], low: Int, high: Int) {
+    if low < high {
+        let d = partition3(arr: &arr, low: low, high: high)
+        quickSort3(arr: &arr, low: low, high: d - 1)
+        quickSort3(arr: &arr, low: d + 1, high: high)
+    }
+}
+
+var persons = ["male","female","male","female","male","male","female","female","female","male"]
+print(persons)
+quickSort3(arr: &persons, low: 0, high: persons.count - 1)
+print(persons)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

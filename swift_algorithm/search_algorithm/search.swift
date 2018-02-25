@@ -9,6 +9,13 @@ let desc = ">>>>>>>>>> 无序数组只能是linear search, 遍历操作, 时间�
  时间复杂度:最好O(1), 最差O(n).
  */
 
+func linear_search<T: Equatable>(_ array: [T], _ element: T) -> Int {
+    for (idx, obj) in array.enumerated() where obj == element {
+        return idx
+    }
+    return -1
+}
+
 
 /**
  Binary Search
@@ -56,6 +63,10 @@ print(desc)
 
 
 let numbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67]
+
+print(linear_search(numbers, 5))
+print(linear_search(numbers, 50))
+
 let index_iterative = binary_search_iterative(array: numbers, element: 43)   // gives 13
 print(index_iterative as Any)
 

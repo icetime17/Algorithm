@@ -12,13 +12,14 @@ quick sort
 (而merge sort是稳定算法)
 
 时间复杂度：
-最小为O(N*lg(N+1))，最大为O(N*N)。平均为
+最小为O(N*lg(N+1))，最大为O(N*N)。平均为O(nlgn)
 遍历一次的时间复杂度是O(N)，所以关键是看遍历几次（即递归的深度）。
 因为快速排序采用分治法进行遍历，所以类似二叉树，需遍历的次数就是二叉树的深度。
 二叉树的深度最小为lg(N+1)，最大为N。
 
 空间复杂度：
 lg(N)
+不需要额外的数组, 是in-place sort.
 
 partition:
 分治法的关键在于每次得出一个pivot的时候, 该pivot一定位于数组中的正确位置.
@@ -32,6 +33,10 @@ https://github.com/raywenderlich/swift-algorithm-club/raw/master/Quicksort/Image
 
 
 func swap_T<T>(array: inout [T], i: Int, j: Int) {
+    if i < 0 || j < 0 { 
+        return
+    }
+
     if array.count <= i ||
        array.count <= j {
         return

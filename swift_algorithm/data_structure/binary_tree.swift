@@ -47,14 +47,15 @@ extension Node: CustomStringConvertible {
 }
 
 extension Node {
-    // 二叉树的深度
+    // 二叉树的最大深度
     // [log(N+1),N]
-    var depth: Int {
+    var maxDepth: Int {
         var number = 0
         if let left = left {
-            number = left.depth
-        } else if let right = right {
-            number = right.depth
+            number = left.maxDepth
+        }
+        if let right = right {
+            number = max(number, right.maxDepth)
         }
         number = number + 1
         return number
@@ -338,16 +339,16 @@ extension Node {
 
 extension Node {
     // 二叉树翻转
-    func invert() -> Node {
+    func reverse() -> Node {
         if left == nil && right == nil {
             return self
         }
 
         if let left = left {
-            _ = left.invert()
+            _ = left.reverse()
         }
         if let right = right {
-            _ = right.invert()
+            _ = right.reverse()
         }
 
         let tmp = left
@@ -383,17 +384,17 @@ func simpleTree() -> Node {
 
 let sTree = simpleTree()
 print(">>>>>>>>>> simpleTree")
-print("二叉树的深度: \(sTree.depth)")
+print("二叉树的深度: \(sTree.maxDepth)")
 //print("二叉树的desc: \(sTree.desc)")
 print("二叉树的所有节点个数: \(sTree.allNodesNumber)")
 print("二叉树的所有叶子节点个数: \(sTree.allLeafNodesNumber)")
-for level in 0 ... sTree.depth {
+for level in 0 ... sTree.maxDepth {
     print("二叉树的第\(level)层的所有节点个数: \(sTree.nodesNumberAtLevel(level: level))")
 
     print("二叉树的第\(level)层的所有节点: ")
     sTree.visitNodesAtLevel(level: level)
 }
-for level in 0 ... sTree.depth {
+for level in 0 ... sTree.maxDepth {
     print("二叉树的第\(level)层的所有节点个数: \(sTree.nodesNumberAtLevel(level: level))")
 
     print("二叉树的第\(level)层的所有节点: ")
@@ -423,7 +424,7 @@ sTree.preOrderTraversalViaStack()
 print("二叉树的中序遍历(栈实现): ")
 sTree.middleOrderTraversalViaStack()
 
-print("二叉树翻转: \(sTree.invert())")
+print("二叉树翻转: \(sTree.reverse())")
 
 
 print("")
@@ -466,17 +467,17 @@ func complexTree() -> Node {
 
 let cTree = complexTree()
 print(">>>>>>>>>> complexTree")
-print("二叉树的深度: \(cTree.depth)")
+print("二叉树的深度: \(cTree.maxDepth)")
 //print("二叉树的desc: \(cTree.desc)")
 print("二叉树的所有节点个数: \(cTree.allNodesNumber)")
 print("二叉树的所有叶子节点个数: \(cTree.allLeafNodesNumber)")
-for level in 0 ... cTree.depth {
+for level in 0 ... cTree.maxDepth {
     print("二叉树的第\(level)层的所有节点个数: \(cTree.nodesNumberAtLevel(level: level))")
 
     print("二叉树的第\(level)层的所有节点: ")
     cTree.visitNodesAtLevel(level: level)
 }
-for level in 0 ... cTree.depth {
+for level in 0 ... cTree.maxDepth {
     print("二叉树的第\(level)层的所有节点个数: \(cTree.nodesNumberAtLevel(level: level))")
 
     print("二叉树的第\(level)层的所有节点: ")
@@ -506,4 +507,4 @@ cTree.preOrderTraversalViaStack()
 print("二叉树的中序遍历(栈实现): ")
 cTree.middleOrderTraversalViaStack()
 
-print("二叉树翻转: \(cTree.invert())")
+print("二叉树翻转: \(cTree.reverse())")

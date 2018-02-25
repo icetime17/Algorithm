@@ -13,6 +13,10 @@ let desc = ">>>>>>>>>> bubble sort \n 时间复杂度都为 O(n^2) \n Best O(n^2
 
 
 func swap_T<T>(array: inout [T], i: Int, j: Int) {
+    if i < 0 || j < 0 { 
+        return
+    }
+
     if array.count <= i ||
        array.count <= j {
         return

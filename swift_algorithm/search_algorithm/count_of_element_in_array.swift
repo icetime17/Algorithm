@@ -19,7 +19,7 @@ func count_of_element_in_array<T: Comparable>(array: [T], element: T) -> Int {
 
 // binary search
 func count_of_element_in_ordered_array<T: Comparable>(array: [T], element: T) -> Int {
-    func beginIndex(array: [T], element: T) -> Int {
+    func p_beginIndex(array: [T], element: T) -> Int {
         var beginIndex = 0
         var endIndex = array.count
         while beginIndex < endIndex {
@@ -33,7 +33,7 @@ func count_of_element_in_ordered_array<T: Comparable>(array: [T], element: T) ->
         return beginIndex
     }
 
-    func endIndex(array: [T], element: T) -> Int {
+    func p_endIndex(array: [T], element: T) -> Int {
         var beginIndex = 0
         var endIndex = array.count
         while beginIndex < endIndex {
@@ -47,7 +47,10 @@ func count_of_element_in_ordered_array<T: Comparable>(array: [T], element: T) ->
         return beginIndex
     }
 
-    return endIndex(array: array, element: element) - beginIndex(array: array, element: element)
+    let beginIndex = p_beginIndex(array: array, element: element)
+    let endIndex = p_endIndex(array: array, element: element)
+
+    return endIndex - beginIndex
 }
 
 
@@ -56,8 +59,24 @@ func count_of_element_in_ordered_array<T: Comparable>(array: [T], element: T) ->
 print(desc)
 
 
-let numbers = [ 0, 1, 1, 3, 3, 3, 3, 6, 8, 10, 11, 11 ]
+var numbers = [Int]()
 
+numbers = [ 0, 1, 1, 3, 3, 3, 3, 6, 8, 10, 11, 11 ]
 print(count_of_element_in_array(array: numbers, element: 3))  // returns 4
 
 print(count_of_element_in_ordered_array(array: numbers, element: 3)) // returns 4
+
+numbers = [5, 7, 7, 8, 8, 10]
+print(count_of_element_in_ordered_array(array: numbers, element: 8)) // returns 2
+
+numbers = []
+print(count_of_element_in_ordered_array(array: numbers, element: 8)) // returns 0
+
+numbers = [1, 2]
+print(count_of_element_in_ordered_array(array: numbers, element: 8)) // returns 0
+
+numbers = [8]
+print(count_of_element_in_ordered_array(array: numbers, element: 8)) // returns 1
+
+numbers = [1]
+print(count_of_element_in_ordered_array(array: numbers, element: 8)) // returns 0

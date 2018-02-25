@@ -27,8 +27,12 @@ public struct Stack<T> {
         array.append(newElement)
     }
 
-    public mutating func pop() -> T {
-        return array.remove(at: array.count - 1)
+    public mutating func pop() -> T? {
+        if !isEmpty {
+            return array.remove(at: array.count - 1)
+        } else {
+            return nil
+        }
     }
 
     public var top: T? {
@@ -50,11 +54,11 @@ print(stack_int)
 stack_int.push(3)
 print(stack_int)
 print(stack_int.top as Any)
-print(stack_int.pop())
+print(stack_int.pop() as Any)
 print(stack_int)
-print(stack_int.pop())
+print(stack_int.pop() as Any)
 print(stack_int)
-print(stack_int.pop())
+print(stack_int.pop() as Any)
 print(stack_int)
 
 print("")
@@ -67,9 +71,13 @@ print(string_stack)
 string_stack.push("CCC")
 print(string_stack)
 print(string_stack.top as Any)
-print(string_stack.pop())
+print(string_stack.pop() as Any)
 print(string_stack)
-print(string_stack.pop())
+print(string_stack.pop() as Any)
 print(string_stack)
-print(string_stack.pop())
+print(string_stack.pop() as Any)
+print(string_stack)
+
+
+print(string_stack.pop() as Any)
 print(string_stack)
