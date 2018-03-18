@@ -20,7 +20,7 @@ def bubble_sort(list):
 
 
 if __name__ == '__main__':
-    list = [1,3,5,6,2]
+    list = [1,3,5,6,2,7,4,8,9]
     print(list)
     bubble_sort(list)
     print(list)

@@ -19,7 +19,8 @@ quick sort
 
 空间复杂度：
 lg(N)
-不需要额外的数组, 是in-place sort.
+采用分治法, 则不需要额外的数组, 是in-place sort.
+不采用分治法(quick_sort_1), 则需要额外的数组.
 
 partition:
 分治法的关键在于每次得出一个pivot的时候, 该pivot一定位于数组中的正确位置.

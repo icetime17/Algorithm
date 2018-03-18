@@ -34,6 +34,8 @@ func swap_T<T>(array: inout [T], i: Int, j: Int) {
  类似有两个loop的排序算法, 一般情况下的最坏都为O(n^2).
  */
 func insertion_sort<T: Comparable>(array: [T]) -> [T] {
+    guard array.count > 1 else { return array }
+
     var result = array
 
     // outer loop只需要从1到最后一个元素, 因第一个不需要考虑(inner的while会对其进行比较)

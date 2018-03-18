@@ -20,13 +20,23 @@ func swap_T<T>(array: inout [T], i: Int, j: Int) {
 
 /**
  每次遍历剩下未排序的元素, 选择最小的, 排在已排序部分.
- 类似插入排序
- 每次从未排序的部分中, 选择最小的, 排在已排序的部分.
+ 类似插入排序, 区别在于新元素放到已排序部分的方式不同.
+ 插入排序: 每次从未排序部分中取出一个元素, 插入 在已排序部分的正确位置. 所以第一个元素不需要处理.
+ 选择排序: 每次从未排序部分中取出一个元素, 先 选择 出其中最小的, 排在已排序的部分即可.
+          因为每次选择出来的都是最小的, 所以直接放到对应的位置就是正确的. 所以最后一个元素不需要处理.
  [ ...sorted numbers... | ...unsorted numbers... ]
  选择排序需要遍历两遍, 时间复杂度为O(n^2)
  */
+
+ /*
+ [| 8, 3, 5, 4, 6 ]
+ [3 | 8, 5, 4, 6]
+ [3 4 | 5, 8, 6]
+ [3, 4, 5 | 6, 8]
+ [3, 4, 5, 6 | 8]
+ */
 func selection_sort<T: Comparable>(array: [T]) -> [T] {
-    guard array.count > 0 else { return array }
+    guard array.count > 1 else { return array }
 
     var result = array
     // outer loop只需要从0到倒数第二个元素即可(最后一个元素不用排了)
@@ -41,6 +51,7 @@ func selection_sort<T: Comparable>(array: [T]) -> [T] {
 
         if i != lowest {
             swap_T(array: &result, i: i, j: lowest)
+            print(result)
         }
     }
 
@@ -55,7 +66,7 @@ print(desc)
 
 var numbers = [Int]()
 
-numbers = [ 5, 8, 3, 4, 6 ]
+numbers = [ 8, 3, 5, 4, 6 ]
 print(numbers)
 let results_1 = selection_sort(array: numbers)
 print(results_1)
