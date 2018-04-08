@@ -184,6 +184,7 @@ class LinkedList<T> {
         }
     }
 
+    // O(N)
     func isCircleExisting() -> Bool {
         var slow = head
         var fast = head
@@ -200,11 +201,29 @@ class LinkedList<T> {
         }
         return false
     }
+
+    // O(M+N)
+    func isCrossingWith(anotherList: LinkedList<T>) -> Bool {
+        guard var node = self.head, var node2 = anotherList.head else {
+            return false
+        }
+
+        while let next = node.next {
+            node = next
+        }
+
+        while let next = node2.next {
+            node2 = next
+        }
+        return node.isEqual(node2)
+    }
 }
 
 var head = LinkedListNode(value: "HEAD")
 var A = LinkedListNode(value: "A")
 var B = LinkedListNode(value: "B")
+var C = LinkedListNode(value: "C")
+var D = LinkedListNode(value: "D")
 
 var list = LinkedList<String>()
 list.head = head
@@ -212,6 +231,18 @@ head.next = A
 A.pre = head
 A.next = B
 B.pre = A
+B.next = C
+C.pre = B
+C.next = nil
+// HEAD <-> A <-> B <-> C
+
+var list2 = LinkedList<String>()
+list2.head = D
+D.next = B
+B.next = C
+// D -> B -> C
+
+print(list.isCrossingWith(anotherList: list2))
 
 if list.isCircleExisting() == false {
     list.enumerate { (node) in

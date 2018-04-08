@@ -40,10 +40,12 @@ def quick_sort_partition(list, low, high):
             while i < j and list[j] >= pivot:
                 j -= 1
             swap_T.swap_T(list,i,j)
+            print(list)
 
             while i < j and list[i] <= pivot:
                 i += 1
             swap_T.swap_T(list,i,j)
+            print(list)
 
         return i
 

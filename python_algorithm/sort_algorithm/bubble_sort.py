@@ -17,6 +17,7 @@ def bubble_sort(list):
         for j in xrange(len(list) - 1 - i):
             if list[j] > list[j+1]:
                 swap_T.swap_T(list, j, j+1)
+                print(list)
 
 
 if __name__ == '__main__':
