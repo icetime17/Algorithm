@@ -23,6 +23,14 @@ public struct Stack<T> {
         return array.count
     }
 
+    public var top: T? {
+        return array.last
+    }
+
+    public var bottom: T? {
+        return array.first
+    }
+    
     public mutating func push(_ newElement: T) {
         array.append(newElement)
     }
@@ -34,10 +42,6 @@ public struct Stack<T> {
             return nil
         }
     }
-
-    public var top: T? {
-        return array.last
-    }
 }
 
 
@@ -48,36 +52,38 @@ print(desc)
 
 var stack_int = Stack<Int>()
 stack_int.push(1)
-print(stack_int)
+print(stack_int) // [1]
 stack_int.push(2)
-print(stack_int)
+print(stack_int) // [1,2]
 stack_int.push(3)
-print(stack_int)
-print(stack_int.top as Any)
-print(stack_int.pop() as Any)
-print(stack_int)
-print(stack_int.pop() as Any)
-print(stack_int)
-print(stack_int.pop() as Any)
-print(stack_int)
+print(stack_int) // [1,2,3]
+print(stack_int.top as Any) // 3
+print(stack_int.bottom as Any) // 1
+print(stack_int.pop() as Any) // 3
+print(stack_int) // [1,2]
+print(stack_int.pop() as Any) // 2
+print(stack_int) // [1]
+print(stack_int.pop() as Any) // 1
+print(stack_int) // []
 
 print("")
 
 var string_stack = Stack<String>()
 string_stack.push("AAA")
-print(string_stack)
+print(string_stack) // ["AAA"]
 string_stack.push("BBB")
-print(string_stack)
+print(string_stack) // ["AAA", "BBB"]
 string_stack.push("CCC")
-print(string_stack)
-print(string_stack.top as Any)
-print(string_stack.pop() as Any)
-print(string_stack)
-print(string_stack.pop() as Any)
-print(string_stack)
-print(string_stack.pop() as Any)
-print(string_stack)
+print(string_stack) // ["AAA", "BBB", "CCC"]
+print(string_stack.top as Any) // "CCC"
+print(string_stack.bottom as Any) // "AAA"
+print(string_stack.pop() as Any) // "CCC"
+print(string_stack) // ["AAA", "BBB"]
+print(string_stack.pop() as Any) // "BBB"
+print(string_stack) // ["AAA"]
+print(string_stack.pop() as Any) // "AAA"
+print(string_stack) // []
 
 
-print(string_stack.pop() as Any)
-print(string_stack)
+print(string_stack.pop() as Any) // nil
+print(string_stack) // []
