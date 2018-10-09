@@ -27,7 +27,7 @@ func swap_T<T>(array: inout [T], i: Int, j: Int) {
 
 func reverse_word(_ word: String) -> String {
     var array = Array(word)
-    
+
     var begin = 0
     var end = array.count - 1
     while begin < end {
@@ -70,7 +70,26 @@ var word = "hello"
 print(word)
 print(reverse_word(word))
 print("")
+
 var string = "the sky is blue"
 print(string)
 print(reverse_string(string))
 print(reverse_string_by_word(string))
+
+
+// Given s = "the sky is blue",
+// return "blue is sky the".
+func reverser_1(string: String) -> String {
+    var array = string.split(separator: " ")
+    // array = array.reversed()
+    var begin = 0
+    var end = array.count - 1
+    while begin < end {
+        (array[begin], array[end]) = (array[end], array[begin])
+        begin += 1
+        end -= 1
+    }
+    return array.joined(separator: " ")
+}
+var string_2 = "the sky is blue"
+print(reverser_1(string: string_2))

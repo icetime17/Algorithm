@@ -30,3 +30,35 @@ func two_sum(_ nums: [Int], _ target: Int) -> [Int] {
 
 var nums = [2, 7, 11, 15]
 print(two_sum(nums, 9))
+
+
+func two_sum_set(_ nums: [Int], _ target: Int) -> Bool {
+    var set = Set<Int>()
+    for num in nums {
+      if set.contains(target - num) {
+        return true
+      }
+      set.insert(num)
+    }
+    return false
+}
+
+nums = [2, 7, 11, 15]
+print(two_sum_set(nums, 9))
+
+
+func two_sum_dict(_ nums: [Int], _ target: Int) -> [(Int, Int)] {
+    var ret = [(Int, Int)]()
+
+    var set = Set<Int>()
+    for num in nums {
+        if set.contains(target - num) {
+            ret.append((target-num, num))
+        }
+        set.insert(num)
+    }
+    return ret
+}
+
+nums = [2, 7, 1, 8, 11, 15]
+print(two_sum_dict(nums, 9))

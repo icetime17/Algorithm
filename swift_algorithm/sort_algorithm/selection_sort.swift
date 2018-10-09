@@ -61,6 +61,20 @@ func selection_sort<T: Comparable>(array: [T]) -> [T] {
     return result;
 }
 
+func selection_sort_v2<T: Comparable>(array: inout [T]) {
+    for i in 0..<array.count {
+        // 选择[i,n]区间内的最小值
+        var minIndex = i
+        for j in (i+1)..<array.count {
+            if array[j] < array[minIndex] {
+                minIndex = j
+            }
+        }
+        // 将该最小值放在最左侧
+        swap_T(array: &array, i: i, j: minIndex)
+    }
+}
+
 
 //////////////////////////////////////////////////
 
@@ -81,3 +95,10 @@ numbers = [1,3,10,6,4,5,9,2,8,7]
 print(numbers)
 results = selection_sort(array: numbers)
 print(results)
+
+print("")
+
+numbers = [1,3,10,6,4,5,9,2,8,7]
+print(numbers)
+selection_sort_v2(array: &numbers)
+print(numbers)

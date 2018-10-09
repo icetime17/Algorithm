@@ -34,7 +34,7 @@ https://github.com/raywenderlich/swift-algorithm-club/raw/master/Quicksort/Image
 
 
 func swap_T<T>(array: inout [T], i: Int, j: Int) {
-    if i < 0 || j < 0 { 
+    if i < 0 || j < 0 {
         return
     }
 
