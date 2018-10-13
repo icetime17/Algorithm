@@ -2,10 +2,11 @@
 
 
 let desc = ">>>>>>>>>> merge sort: \n 1, split: 每次从数组中取出midIndex, 分别对左右的子数组递归调用merge sort. \n 2, merge: 对左右子数组分别遍历取元素进行比较, 存入ordered结果数组中."
+// 稳定排序
 
 
 func swap_T<T>(array: inout [T], i: Int, j: Int) {
-    if i < 0 || j < 0 { 
+    if i < 0 || j < 0 {
         return
     }
 

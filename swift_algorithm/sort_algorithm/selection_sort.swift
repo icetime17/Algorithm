@@ -2,6 +2,7 @@
 
 
 let desc = ">>>>>>>>>> 选择排序: 每次从数组的剩余元素中 选择 出最小的元素, 放到结果数组中的正确位置即可."
+// 稳定排序
 
 func swap_T<T>(array: inout [T], i: Int, j: Int) {
     if i < 0 || j < 0 {
