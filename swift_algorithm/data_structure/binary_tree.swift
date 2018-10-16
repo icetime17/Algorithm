@@ -102,6 +102,7 @@ extension Node {
         }
         var number = 0
         if let left = left {
+            // self的第level层，即left和right的第level-1层
             number = number + left.nodesNumberAtLevel(level: level - 1)
         }
         if let right = right {
@@ -156,6 +157,7 @@ extension Node {
         var leftNodes = [Node]()
         var rightNodes = [Node]()
         if let left = left {
+            // self的第level层，即left和right的第level-1层
             leftNodes = left.nodesAtLevel(level: level - 1)
         }
         if let right = right {
