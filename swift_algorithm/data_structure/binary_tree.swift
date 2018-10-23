@@ -361,6 +361,30 @@ extension Node {
     }
 }
 
+// 判断是不是平衡二叉树（红黑树，AVL树等）
+// 空树，或左右两个子树的高度差的绝对值不超过1。
+// 左右两个子树都是平衡二叉树。
+// 先递归判断左右子树都是平衡的，然后求出左右子树的深度，若深度之差大于1，则不平衡。
+func isBalancedTree(node: Node?) -> Bool {
+    if node == nil {
+        return true
+    }
+
+    if isBalancedTree(node: node?.left) == false {
+        return false
+    }
+    if isBalancedTree(node: node?.right) == false {
+        return false
+    }
+
+    let depthLeft = node?.left?.maxDepth != nil ? node?.left?.maxDepth : 0
+    let depthRight = node?.right?.maxDepth != nil ? node?.right?.maxDepth : 0
+    if abs(depthLeft! - depthRight!) > 1 {
+        return false
+    }
+    return true
+}
+
 
 //////////////////////////////////////////////////
 
@@ -510,3 +534,24 @@ print("二叉树的中序遍历(栈实现): ")
 cTree.middleOrderTraversalViaStack()
 
 print("二叉树翻转: \(cTree.reverse())")
+
+func nonBalancedTree() -> Node {
+    let a = Node(value: "A")
+    let b = Node(value: "B")
+    let c = Node(value: "C")
+    a.left = b
+    a.right = c
+    let d = Node(value: "D")
+    let e = Node(value: "E")
+    b.left = d
+    b.right = e
+    let f = Node(value: "F")
+    let g = Node(value: "G")
+    d.left = f
+    d.right = g
+    return a
+}
+let nbTree = nonBalancedTree()
+print("平衡二叉树: \(isBalancedTree(node: sTree))")
+print("平衡二叉树: \(isBalancedTree(node: cTree))")
+print("非平衡二叉树: \(isBalancedTree(node: nbTree))")
