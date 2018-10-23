@@ -365,6 +365,8 @@ extension Node {
 // 空树，或左右两个子树的高度差的绝对值不超过1。
 // 左右两个子树都是平衡二叉树。
 // 先递归判断左右子树都是平衡的，然后求出左右子树的深度，若深度之差大于1，则不平衡。
+// 优化:
+// 在分别判断左右子树是否平衡的同时，将其深度计算出来
 func isBalancedTree(node: Node?) -> Bool {
     if node == nil {
         return true
@@ -385,6 +387,26 @@ func isBalancedTree(node: Node?) -> Bool {
     return true
 }
 
+func isBalancedTree_v2(node: Node?, depth: inout Int) -> Bool {
+    if node == nil {
+        return true
+    }
+
+    var depthLeft = 0
+    var depthRight = 0
+    if isBalancedTree_v2(node: node?.left, depth: &depthLeft) == false {
+        return false
+    }
+    if isBalancedTree_v2(node: node?.right, depth: &depthRight) == false {
+        return false
+    }
+
+    if abs(depthLeft - depthRight) > 1 {
+        return false
+    }
+    depth = max(depthLeft, depthRight) + 1
+    return true
+}
 
 //////////////////////////////////////////////////
 
@@ -555,3 +577,5 @@ let nbTree = nonBalancedTree()
 print("平衡二叉树: \(isBalancedTree(node: sTree))")
 print("平衡二叉树: \(isBalancedTree(node: cTree))")
 print("非平衡二叉树: \(isBalancedTree(node: nbTree))")
+var depth = 0
+print("非平衡二叉树: \(isBalancedTree_v2(node: nbTree, depth: &depth))")
