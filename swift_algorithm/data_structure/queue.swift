@@ -44,6 +44,10 @@ public struct Queue<T> {
             return array.remove(at: 0)
         }
     }
+
+    public func peek() -> T? {
+        return array.first
+    }
 }
 
 
@@ -117,6 +121,7 @@ queue_int.enqueue(2)
 print(queue_int) // [1,2]
 queue_int.enqueue(3)
 print(queue_int) // [1,2,3]
+print("peek : \(queue_int.peek() as Any)")
 print("top : \(queue_int.top as Any)") // 1
 print("bottom : \(queue_int.bottom as Any)") // 3
 print("dequeue: \(queue_int.dequeue() as Any)") // 1

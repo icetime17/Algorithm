@@ -30,7 +30,7 @@ public struct Stack<T> {
     public var bottom: T? {
         return array.first
     }
-    
+
     public mutating func push(_ newElement: T) {
         array.append(newElement)
     }
@@ -41,6 +41,10 @@ public struct Stack<T> {
         } else {
             return nil
         }
+    }
+
+    public func peek() -> T? {
+        return array.last
     }
 }
 
@@ -57,13 +61,14 @@ stack_int.push(2)
 print(stack_int) // [1,2]
 stack_int.push(3)
 print(stack_int) // [1,2,3]
-print(stack_int.top as Any) // 3
-print(stack_int.bottom as Any) // 1
-print(stack_int.pop() as Any) // 3
+print("peek : \(stack_int.peek() as Any)")
+print("top : \(stack_int.top as Any)") // 3
+print("bottom : \(stack_int.bottom as Any)") // 1
+print("pop : \(stack_int.pop() as Any)") // 3
 print(stack_int) // [1,2]
-print(stack_int.pop() as Any) // 2
+print("pop : \(stack_int.pop() as Any)") // 2
 print(stack_int) // [1]
-print(stack_int.pop() as Any) // 1
+print("pop : \(stack_int.pop() as Any)") // 1
 print(stack_int) // []
 
 print("")
