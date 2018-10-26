@@ -368,19 +368,19 @@ extension Node {
 // 优化:
 // 在分别判断左右子树是否平衡的同时，将其深度计算出来
 func isBalancedTree(node: Node?) -> Bool {
-    if node == nil {
+    guard let node = node else {
         return true
     }
 
-    if isBalancedTree(node: node?.left) == false {
+    if isBalancedTree(node: node.left) == false {
         return false
     }
-    if isBalancedTree(node: node?.right) == false {
+    if isBalancedTree(node: node.right) == false {
         return false
     }
 
-    let depthLeft = node?.left?.maxDepth != nil ? node?.left?.maxDepth : 0
-    let depthRight = node?.right?.maxDepth != nil ? node?.right?.maxDepth : 0
+    let depthLeft = node.left?.maxDepth != nil ? node.left?.maxDepth : 0
+    let depthRight = node.right?.maxDepth != nil ? node.right?.maxDepth : 0
     if abs(depthLeft! - depthRight!) > 1 {
         return false
     }
@@ -388,16 +388,17 @@ func isBalancedTree(node: Node?) -> Bool {
 }
 
 func isBalancedTree_v2(node: Node?, depth: inout Int) -> Bool {
-    if node == nil {
+    guard let node = node else {
+        depth = 0
         return true
     }
 
     var depthLeft = 0
     var depthRight = 0
-    if isBalancedTree_v2(node: node?.left, depth: &depthLeft) == false {
+    if isBalancedTree_v2(node: node.left, depth: &depthLeft) == false {
         return false
     }
-    if isBalancedTree_v2(node: node?.right, depth: &depthRight) == false {
+    if isBalancedTree_v2(node: node.right, depth: &depthRight) == false {
         return false
     }
 
