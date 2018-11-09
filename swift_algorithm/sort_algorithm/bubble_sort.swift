@@ -1,16 +1,12 @@
 #!/usr/bin/swift
 
-
-/*
-bubble sort
-时间复杂度都为 O(n^2)
-Best O(n^2); Average O(n^2); Worst O(n^2).
-
-空间复杂度为 O(1)
-*/
-
-let desc = ">>>>>>>>>> bubble sort \n 时间复杂度都为 O(n^2) \n Best O(n^2); Average O(n^2); Worst O(n^2)."
-
+let desc = """
+>>>>>>>>>> bubble sort
+时间复杂度 O(n^2)
+  Best O(n); Average O(n^2); Worst O(n^2).
+空间复杂度 O(1)
+稳定排序
+"""
 
 func swap_T<T>(array: inout [T], i: Int, j: Int) {
     if i < 0 || j < 0 {
@@ -65,17 +61,26 @@ func bubbleSort_2(_ array: inout [Int]) {
 }
 
 
-//
+// 优化：没有数据交换时，即已完成排序。
 func bubbleSort_3(_ array: inout [Int]) {
     if array.count <= 1 {
         return
     }
 
     for i in 0..<array.count-1 {
+        // 没有数据交换时，即已完成排序。break即可。
+        var isSwapped = false
+
         for j in 0..<array.count-1-i {
           if array[j] > array[j+1] {
               (array[j], array[j+1]) = (array[j+1], array[j])
+
+              isSwapped = true
           }
+          print(array)
+        }
+        if !isSwapped {
+            break
         }
     }
 }
@@ -103,6 +108,13 @@ print(numbers)
 print("")
 
 numbers = [1,3,10,6,4,5,9,2,8,7]
+print(numbers)
+bubbleSort_3(&numbers)
+print(numbers)
+
+print("")
+
+numbers = [1,2,3,4,5,6,7,8,9,10]
 print(numbers)
 bubbleSort_3(&numbers)
 print(numbers)

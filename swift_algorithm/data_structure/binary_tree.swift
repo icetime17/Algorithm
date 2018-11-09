@@ -182,21 +182,25 @@ extension Node {
     }
 
     private func p_isValueIn(min: String?, max: String?) -> Bool {
-        // 所有左子节点都必须小于根节点
-        if min != nil && value <= min! {
+        // 所有左子节点都必须小于根节点, min必须小于value。
+        if let min = min, value <= min {
             return false
         }
-        // 所有右子节点都必须大于根节点
-        if max != nil && value >= max! {
+        // 所有右子节点都必须大于根节点，max必须大于value。
+        if let max = max, value >= max {
             return false
         }
 
         var ret = true
         if let left = left {
-            ret = ret && left.p_isValueIn(min: min, max: value)
+            ret = left.p_isValueIn(min: min, max: value)
+        }
+        // 若已判断出，则return即可。
+        if ret == false {
+            return false
         }
         if let right = right {
-            ret = ret && right.p_isValueIn(min: value, max: max)
+            ret = right.p_isValueIn(min: value, max: max)
         }
         return ret
     }
@@ -580,3 +584,22 @@ print("平衡二叉树: \(isBalancedTree(node: cTree))")
 print("非平衡二叉树: \(isBalancedTree(node: nbTree))")
 var depth = 0
 print("非平衡二叉树: \(isBalancedTree_v2(node: nbTree, depth: &depth))")
+
+func binarySearchTree() -> Node {
+  let d = Node(value: "D")
+  let b = Node(value: "B")
+  let f = Node(value: "F")
+  d.left = b
+  d.right = f
+  let a = Node(value: "A")
+  let c = Node(value: "C")
+  b.left = a
+  b.right = c
+  let e = Node(value: "E")
+  let g = Node(value: "G")
+  f.left = e
+  f.right = g
+  return d
+}
+let bsTree = binarySearchTree()
+print("二叉树是否是二叉查找树: \(bsTree.isBinarySearchTree)")

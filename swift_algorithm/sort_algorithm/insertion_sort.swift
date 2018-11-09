@@ -1,8 +1,16 @@
 #!/usr/bin/swift
 
 
-let desc = ">>>>>>>>>> 插入排序: 每次从数组中取出一个元素, 插入 （放到） 结果数组中的正确位置即可. 类似扑克牌的理牌过程."
-// 稳定排序
+let desc = """
+>>>>>>>>>> 插入排序: 每次从数组中取出一个元素, 插入 （放到） 结果数组中的正确位置即可.
+类似扑克牌的理牌过程.
+时间复杂度 O(n^2)
+  Best O(n); Average O(n^2); Worst O(n^2).
+空间复杂度 O(1)
+稳定排序
+
+相比冒泡排序，插入排序少了很多次的数据交换操作，性能优化空间比较大。
+"""
 
 func swap_T<T>(array: inout [T], i: Int, j: Int) {
     if i < 0 || j < 0 {
@@ -44,11 +52,11 @@ func insertion_sort<T: Comparable>(array: [T]) -> [T] {
         var j = i
         // inner loop比较 j 与其左侧的元素, 找出最小的, 将其swap至最左侧
         // while j > 0 说明最后一次比较的是result[1]与result[0]
-        // result[j] < result[j - 1] 说明插入排序可能提前结束, 因此比选择排序效率高一些
-        while j > 0 && result[j] < result[j - 1] {
-            swap_T(array: &result, i: j, j: j - 1)
+        // result[j - 1] > result[j] 说明插入排序可能提前结束, 因此比选择排序效率高一些
+        while j > 0 && result[j - 1] > result[j] {
+            swap_T(array: &result, i: j - 1, j: j)
             print(result)
-            j = j - 1
+            j -= 1
         }
         // 取出一个元素result[i], 将result[i]放到它的正确位置
     }
@@ -70,10 +78,10 @@ func insertion_sort_1<T: Comparable>(array: [T]) -> [T] {
         // 取出一个元素result[i], 将result[i]放到它的正确位置, (而该元素的原始位置是在要比较的数组的最右侧)
         let target = result[i]
         var j = i
-        while j > 0 && target < result[j - 1] {
+        while j > 0 && result[j - 1] > target {
             result[j] = result[j - 1]
             print(result)
-            j = j - 1
+            j -= 1
         }
         result[j] = target
         print(result)
@@ -82,6 +90,20 @@ func insertion_sort_1<T: Comparable>(array: [T]) -> [T] {
     return result
 }
 
+// 使用inout改进空间复杂度
+func insertion_sort_2<T: Comparable>(array: inout [T]) {
+    guard array.count > 1 else { return }
+
+    for i in 1 ..< array.count {
+        let target = array[i]
+        var j = i
+        while j>0 && array[j-1] > target {
+            array[j] = array[j-1]
+            j -= 1
+        }
+        array[j] = target
+    }
+}
 //////////////////////////////////////////////////
 
 print(desc)
@@ -101,3 +123,10 @@ numbers = [1,3,10,6,4,5,9,2,8,7]
 print(numbers)
 results = insertion_sort_1(array: numbers)
 print(results)
+
+print("")
+
+numbers = [1,3,10,6,4,5,9,2,8,7]
+print(numbers)
+insertion_sort_2(array: &numbers)
+print(numbers)
